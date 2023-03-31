@@ -22,6 +22,8 @@
  *  \return 0 si tout s'est bien passé
  */
 int main (int argc, char** argv) {
+
+    /* On initialise le problème */
      
     if (X)
     {
