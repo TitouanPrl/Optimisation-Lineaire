@@ -94,7 +94,7 @@ void afficherTab(int** tab, int hauteur, int largeur) {
 }
 
 /*!
- *  \fn int varEntrante(int** tab, int hauteur, int large)
+ *  \fn int varEntrante(int** tab, int largeur)
  *  \author PRADAL Titouan <pradaltito@cy-tech.fr>
  *  \version 0.1
  *  \date Fri 31 March 2023 - 12:30:18
@@ -111,7 +111,8 @@ int varEntrante(int** tab, int largeur) {
    /* Initialisation */
    max = 0;
 
-   for (int i = 0; i < largeur; i++)
+   /* On check toutes les colonnes */
+   for (int i = 0; i < largeur - 1; i++)
    {
       if (tab[0][i] > max)
       {
@@ -120,6 +121,58 @@ int varEntrante(int** tab, int largeur) {
       }
       
    }
-   
+
     return (numCol);
+}
+
+/*!
+ *  \fn int varEntrante(int** tab, int hauteur, int varIn)
+ *  \author PRADAL Titouan <pradaltito@cy-tech.fr>
+ *  \version 0.1
+ *  \date Fri 31 March 2023 - 12:30:18
+ *  \brief Permet de définir la variable sortante
+ *  \param tab le tableau à afficher
+ *  \param hauteur la hauteur du tableau
+ *  \param varIn colonne de la variable entrante
+ *  \return le numéro de ligne de la variable sortante
+ */
+int varSortante(int** tab, int hauteur, int varIn) {
+   /* Déclaration des variables */
+   int numL;
+   int ratioMin;
+
+   /* Initialisation */
+   ratioMin = tab[1][5] / tab[1][varIn];
+
+   /* On check toutes les lignes */
+   for (int i = 2; i < hauteur; i++)
+   {
+      if ((tab[i][5] / tab[i][varIn] < ratioMin) && (tab[i][5] / tab[i][varIn] > 0))
+      {
+         ratioMin = tab[i][5] / tab[i][varIn];
+         numL = i;
+      }
+      
+   }
+   
+    return (numL);
+}
+
+/*!
+ *  \fn void entreeVar(int** tab, int varOut, float pivot)
+ *  \author PRADAL Titouan <pradaltito@cy-tech.fr>
+ *  \version 0.1
+ *  \date Fri 31 March 2023 - 15:17:43
+ *  \brief Passe la variable entrante en base
+ *  \param tab le tableau du problème
+ *  \param varOut la ligne de la variable sortante
+ *  \param pivot valeur du pivot
+ *  \param largeur largeur du tableau
+ */
+void entreeVar(int** tab, int varOut, float pivot, int largeur) {
+    for (int j = 0; j < largeur; j++)
+    {
+      tab[varOut][j] = tab[varOut][j] / pivot;
+    }
+    
 }

@@ -25,6 +25,11 @@ int main (int argc, char** argv) {
 
     /* ==== Problème basé sur l'énnoncé du TD1 1.2 ==== */
 
+    /* Initialisation des variables */
+    int varIn; /* Le numéro de colonne de la variable entrante */
+    int varOut; /* Le numéro de ligne de la variable sortante */
+    float pivot; /* Le pivot pour rentrer la variable */
+
     /* Initialisation du couple cherché */
 
     int a; /* Nb de premiers bouquets */
@@ -59,8 +64,17 @@ int main (int argc, char** argv) {
     /* Affichage du tableau */
     afficherTab(tab, 4, 6);
 
-    /* On trouve la variable entrente */
-    varEntrante(tab, 6);
+    /* On trouve la variable entrante */
+    varIn = varEntrante(tab, 6);
+
+    /* On trouve la variable sortante */
+    varOut = varEntrante(tab, 4, varIn);
+
+    /* On trouve le pivot */
+    pivot = tab[varOut][varIn];
+
+    /* On passe la variable entrante en base */
+    entreeVar(tab, varOut, pivot, 6);
      
     if (X)
     {
