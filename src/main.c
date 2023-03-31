@@ -75,6 +75,12 @@ int main (int argc, char** argv) {
 
     /* On passe la variable entrante en base */
     entreeVar(tab, varOut, pivot, 6);
+
+    /* Combinaison linéaire sur les lignes pour obtenir des 0 dans la colonne */
+    combiLinF(tab, varIn, varOut, 6);
+
+
+
      
     if (X)
     {

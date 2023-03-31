@@ -68,7 +68,6 @@ void tabInit(int **tab, int lys, int rose, int jonquilles, int lys1, int rose1, 
    tab[3][3] = 0;
    tab[3][4] = 1;
    tab[3][5] = jonquilles;
-
 }
 
 /*!
@@ -81,16 +80,15 @@ void tabInit(int **tab, int lys, int rose, int jonquilles, int lys1, int rose1, 
  *  \param hauteur la hauteur du tableau
  *  \param largeur la largeur du tableau
  */
-void afficherTab(int** tab, int hauteur, int largeur) {
-    for (int i = 0; i < hauteur; i++)
-    {
+void afficherTab(int **tab, int hauteur, int largeur)
+{
+   for (int i = 0; i < hauteur; i++)
+   {
       for (int j = 0; j < largeur; j++)
       {
          printf("%d ", tab[j][i]);
       }
-      
-    }
-    
+   }
 }
 
 /*!
@@ -103,7 +101,8 @@ void afficherTab(int** tab, int hauteur, int largeur) {
  *  \param largeur la largeur du tableau
  *  \return le numéro de colonne de la variable entrante
  */
-int varEntrante(int** tab, int largeur) {
+int varEntrante(int **tab, int largeur)
+{
    /* Déclaration des variables */
    int numCol;
    int max;
@@ -119,10 +118,9 @@ int varEntrante(int** tab, int largeur) {
          max = tab[0][i];
          numCol = i;
       }
-      
    }
 
-    return (numCol);
+   return (numCol);
 }
 
 /*!
@@ -136,7 +134,8 @@ int varEntrante(int** tab, int largeur) {
  *  \param varIn colonne de la variable entrante
  *  \return le numéro de ligne de la variable sortante
  */
-int varSortante(int** tab, int hauteur, int varIn) {
+int varSortante(int **tab, int hauteur, int varIn)
+{
    /* Déclaration des variables */
    int numL;
    int ratioMin;
@@ -152,10 +151,9 @@ int varSortante(int** tab, int hauteur, int varIn) {
          ratioMin = tab[i][5] / tab[i][varIn];
          numL = i;
       }
-      
    }
-   
-    return (numL);
+
+   return (numL);
 }
 
 /*!
@@ -169,10 +167,29 @@ int varSortante(int** tab, int hauteur, int varIn) {
  *  \param pivot valeur du pivot
  *  \param largeur largeur du tableau
  */
-void entreeVar(int** tab, int varOut, float pivot, int largeur) {
-    for (int j = 0; j < largeur; j++)
-    {
+void entreeVar(int **tab, int varOut, float pivot, int largeur)
+{
+   for (int j = 0; j < largeur; j++)
+   {
       tab[varOut][j] = tab[varOut][j] / pivot;
-    }
-    
+   }
+}
+
+/*!
+ *  \fn void combiLinF(int** tab, int varIn, int varOut, int largeur)
+ *  \author PRADAL Titouan <pradaltito@cy-tech.fr>
+ *  \version 0.1
+ *  \date Fri 31 March 2023 - 15:39:09
+ *  \brief Combinaison linéaire sur la ligne de f lors de l'entrée en base de la variable
+ *  \param tab le tableau du problème
+ *  \param varIn colonne de la variable entrante
+ *  \param varOut la ligne de la variable sortante
+ *  \param largeur largeur du tableau
+ */
+void combiLinF(int **tab, int varIn, int varOut, int largeur)
+{
+   for (int j = 0; j < largeur; j++)
+   {
+      tab[0][j] = tab[0][j] - tab[0][j] * tab[varOut][j];
+   }
 }
