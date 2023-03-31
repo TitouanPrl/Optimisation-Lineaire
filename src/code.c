@@ -92,3 +92,34 @@ void afficherTab(int** tab, int hauteur, int largeur) {
     }
     
 }
+
+/*!
+ *  \fn int varEntrante(int** tab, int hauteur, int large)
+ *  \author PRADAL Titouan <pradaltito@cy-tech.fr>
+ *  \version 0.1
+ *  \date Fri 31 March 2023 - 12:30:18
+ *  \brief Permet de définir la variable entrante
+ *  \param tab le tableau à afficher
+ *  \param largeur la largeur du tableau
+ *  \return le numéro de colonne de la variable entrante
+ */
+int varEntrante(int** tab, int largeur) {
+   /* Déclaration des variables */
+   int numCol;
+   int max;
+
+   /* Initialisation */
+   max = 0;
+
+   for (int i = 0; i < largeur; i++)
+   {
+      if (tab[0][i] > max)
+      {
+         max = tab[0][i];
+         numCol = i;
+      }
+      
+   }
+   
+    return (numCol);
+}

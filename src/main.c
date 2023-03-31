@@ -58,6 +58,9 @@ int main (int argc, char** argv) {
 
     /* Affichage du tableau */
     afficherTab(tab, 4, 6);
+
+    /* On trouve la variable entrente */
+    varEntrante(tab, 6);
      
     if (X)
     {
