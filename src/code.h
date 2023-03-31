@@ -43,6 +43,6 @@
 */
 #define TEST(message) printf("%s\n", message)
 
-
+void diviserLigne(int** tab, int nbCol, int numLigne, int case);
 
 #endif

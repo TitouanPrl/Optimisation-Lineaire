@@ -23,7 +23,41 @@
  */
 int main (int argc, char** argv) {
 
-    /* On initialise le problème */
+    /* ==== Problème basé sur l'énnoncé du TD1 1.2 ==== */
+
+    /* Initialisation du couple cherché */
+
+    int a; /* Nb de premiers bouquets */
+    int b; /* Nb de deuxièmes bouquets */
+    int recetteMax; /* Recette max que l'on peut avoir avec les stocks disponibles */
+
+    /* ---- On pose le problème ---- */
+
+    /* Stocks totaux */
+    int lys = 50;
+    int rose = 80;
+    int jonquilles = 80;
+
+    /* Compo bouquet 1 */
+    int lys1 = 10;
+    int rose1 = 10;
+    int jonq1 = 20;
+    int prix1 = 40;
+
+    /* Compo bouquet 2 */
+    int lys2 = 10;
+    int rose2 = 20;
+    int jonq2 = 10;
+    int prix2 = 50;
+
+    /* Création du tableau */
+    int tab[4][6]; /* 4 lignes 6 colonnes */
+
+    /* Initialisation du tableau modélisant le problème */
+    tabInit(tab, lys, rose, jonquilles, lys1, rose1, jonq1, prix1, lys2, rose2, jonq2, prix2);
+
+    /* Affichage du tableau */
+    afficherTab(tab, 4, 6);
      
     if (X)
     {
