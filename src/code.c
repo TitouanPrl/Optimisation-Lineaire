@@ -11,31 +11,16 @@
 
 #include "code.h"
 
-/*!
- *  \fn void diviserLigne(int** tab, int nbCol, int numLigne, int case)
- *  \author PRADAL Titouan <pradaltito@cy-tech.fr>
- *  \version 0.1
- *  \date Tue 28 March 2023 - 15:32:10
- *  \brief
- *  \param
- */
-void diviserLigne(int **tab, int nbCol, int numLigne, int case)
-{
-   for (int j = 1; j < nb_col - 1; j++)
-   {
-      tab[numLigne][j] =
-   }
-}
 
 /*!
- *  \fn void tabInit(int** tab, int lys, int rose, int jonquilles, int lys1, int rose1, int jonq1, int prix1, int lys2, int rose2, int jonq2, int prix2)
+ *  \fn void tabInit(float** tab, int lys, int rose, int jonquilles, int lys1, int rose1, int jonq1, int prix1, int lys2, int rose2, int jonq2, int prix2)
  *  \author PRADAL Titouan <pradaltito@cy-tech.fr>
  *  \version 0.1
  *  \date Fri 31 March 2023 - 12:13:34
  *  \brief Permet d'initialiser le tableau représentant le problème du fleuriste à l'étape 0
  *  \remarks Les paramètres représentent les données du problème
  */
-void tabInit(int **tab, int lys, int rose, int jonquilles, int lys1, int rose1, int jonq1, int prix1, int lys2, int rose2, int jonq2, int prix2)
+void tabInit(float **tab, int lys, int rose, int jonquilles, int lys1, int rose1, int jonq1, int prix1, int lys2, int rose2, int jonq2, int prix2)
 {
    /* Première ligne : f */
    tab[0][0] = prix1;
@@ -71,7 +56,7 @@ void tabInit(int **tab, int lys, int rose, int jonquilles, int lys1, int rose1, 
 }
 
 /*!
- *  \fn void afficherTab(int** tab, int hauteur, int largeur)
+ *  \fn void afficherTab(float** tab, int hauteur, int largeur)
  *  \author PRADAL Titouan <pradaltito@cy-tech.fr>
  *  \version 0.1
  *  \date Fri 31 March 2023 - 12:21:58
@@ -80,7 +65,7 @@ void tabInit(int **tab, int lys, int rose, int jonquilles, int lys1, int rose1, 
  *  \param hauteur la hauteur du tableau
  *  \param largeur la largeur du tableau
  */
-void afficherTab(int **tab, int hauteur, int largeur)
+void afficherTab(float **tab, int hauteur, int largeur)
 {
    for (int i = 0; i < hauteur; i++)
    {
@@ -92,7 +77,7 @@ void afficherTab(int **tab, int hauteur, int largeur)
 }
 
 /*!
- *  \fn int varEntrante(int** tab, int largeur)
+ *  \fn int varEntrante(float** tab, int largeur)
  *  \author PRADAL Titouan <pradaltito@cy-tech.fr>
  *  \version 0.1
  *  \date Fri 31 March 2023 - 12:30:18
@@ -101,7 +86,7 @@ void afficherTab(int **tab, int hauteur, int largeur)
  *  \param largeur la largeur du tableau
  *  \return le numéro de colonne de la variable entrante
  */
-int varEntrante(int **tab, int largeur)
+int varEntrante(float **tab, int largeur)
 {
    /* Déclaration des variables */
    int numCol;
@@ -124,7 +109,7 @@ int varEntrante(int **tab, int largeur)
 }
 
 /*!
- *  \fn int varEntrante(int** tab, int hauteur, int varIn)
+ *  \fn int varEntrante(float** tab, int hauteur, int varIn)
  *  \author PRADAL Titouan <pradaltito@cy-tech.fr>
  *  \version 0.1
  *  \date Fri 31 March 2023 - 12:30:18
@@ -134,7 +119,7 @@ int varEntrante(int **tab, int largeur)
  *  \param varIn colonne de la variable entrante
  *  \return le numéro de ligne de la variable sortante
  */
-int varSortante(int **tab, int hauteur, int varIn)
+int varSortante(float **tab, int hauteur, int varIn)
 {
    /* Déclaration des variables */
    int numL;
@@ -157,7 +142,7 @@ int varSortante(int **tab, int hauteur, int varIn)
 }
 
 /*!
- *  \fn void entreeVar(int** tab, int varOut, float pivot)
+ *  \fn void entreeVar(float** tab, int varOut, float pivot)
  *  \author PRADAL Titouan <pradaltito@cy-tech.fr>
  *  \version 0.1
  *  \date Fri 31 March 2023 - 15:17:43
@@ -167,7 +152,7 @@ int varSortante(int **tab, int hauteur, int varIn)
  *  \param pivot valeur du pivot
  *  \param largeur largeur du tableau
  */
-void entreeVar(int **tab, int varOut, float pivot, int largeur)
+void entreeVar(float **tab, int varOut, float pivot, int largeur)
 {
    for (int j = 0; j < largeur; j++)
    {
@@ -176,7 +161,7 @@ void entreeVar(int **tab, int varOut, float pivot, int largeur)
 }
 
 /*!
- *  \fn void combiLinF(int** tab, int varIn, int varOut, int largeur)
+ *  \fn void combiLinF(float** tab, int varIn, int varOut, int largeur)
  *  \author PRADAL Titouan <pradaltito@cy-tech.fr>
  *  \version 0.1
  *  \date Fri 31 March 2023 - 15:39:09
@@ -186,7 +171,7 @@ void entreeVar(int **tab, int varOut, float pivot, int largeur)
  *  \param varOut la ligne de la variable sortante
  *  \param largeur largeur du tableau
  */
-void combiLinF(int **tab, int varIn, int varOut, int largeur)
+void combiLin(float **tab, int varIn, int varOut, int largeur)
 {
    for (int j = 0; j < largeur; j++)
    {

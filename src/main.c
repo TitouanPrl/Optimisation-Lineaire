@@ -56,7 +56,7 @@ int main (int argc, char** argv) {
     int prix2 = 50;
 
     /* Création du tableau */
-    int tab[4][6]; /* 4 lignes 6 colonnes */
+    float tab[4][6]; /* 4 lignes 6 colonnes */
 
     /* Initialisation du tableau modélisant le problème */
     tabInit(tab, lys, rose, jonquilles, lys1, rose1, jonq1, prix1, lys2, rose2, jonq2, prix2);
@@ -77,35 +77,21 @@ int main (int argc, char** argv) {
     entreeVar(tab, varOut, pivot, 6);
 
     /* Combinaison linéaire sur les lignes pour obtenir des 0 dans la colonne */
-    combiLinF(tab, varIn, varOut, 6);
-
-
-
-     
-    if (X)
+    for (int i = 0; i < 4; i++)
     {
-        Choisir J dans ...
-        if (1 <= k <= floor(m) && a[k][j] > 0)
+        /* On n'applique pas la combinaison linéaire sur la ligne de la var sortante */
+        if (i != varOut)
         {
-            On choisit I dans ...
-            tmp = z[i];
-            z[i] = e[j];
-            e[j] = z[i];
-            diviserLigne(tab, numLigne, a[i][j]); /* Li <- Li / a[i][j]*/
-            
-            for (int k = 0; k < m + 1; k++)
-            {
-                if (k != i)
-                {
-                    soustraireLigne(tab, numLigne1, numLigne2, a[k][j]);
-                }
-                
-            }
-            
+            combiLin(tab, varIn, varOut, 6);
         }
         
     }
-    
+
+
+    /* On affiche la valeur max et le couple de valeur pour lequel il est atteint */
+    printf("Valeur max : %f \n", -tab[0][5]);
+    printf("Optimum : (%f;%f) \n", /*val x1 val x2*/);
+        
 
      return (EXIT_SUCCESS);
 }
