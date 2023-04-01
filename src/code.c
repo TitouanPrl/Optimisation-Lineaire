@@ -178,3 +178,18 @@ void combiLin(float **tab, int varIn, int varOut, int largeur)
       tab[0][j] = tab[0][j] - tab[0][j] * tab[varOut][j];
    }
 }
+
+/*!
+ *  \fn int arret(float** tab, int hauteur, int largeur, )
+ *  \author PRADAL Titouan <pradaltito@cy-tech.fr>
+ *  \version 0.1
+ *  \date Sat 01 April 2023 - 12:17:16
+ *  \brief 
+ *  \param 
+ *  \return 
+ *  \remarks 
+ */
+int arret(float** tab, int hauteur, int largeur, ) {
+    
+    return ();
+}
