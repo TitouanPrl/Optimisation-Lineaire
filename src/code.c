@@ -176,18 +176,7 @@ void entreeVar(float **tab, int varOut, float pivot, int largeur, int varIn)
    }
 }
 
-/*!
- *  \fn void combiLinF(float** tab, int ligne, int varOut, int varIn, int largeur)
- *  \author PRADAL Titouan <pradaltito@cy-tech.fr>
- *  \version 0.1
- *  \date Fri 31 March 2023 - 15:39:09
- *  \brief Combinaison linéaire sur la ligne de f lors de l'entrée en base de la variable
- *  \param tab le tableau du problème
- *  \param ligne la ligne à modifier
- *  \param varOut la ligne de la variable sortante
- *  \param varIn colonne de la variable entrante
- *  \param largeur largeur du tableau
- */
+/* Combinaison linéaire sur la ligne de f lors de l'entrée en base de la variable */
 void combiLin(float **tab, int ligne, int varOut, int varIn, int largeur)
 {
    for (int j = 1; j < largeur; j++)
