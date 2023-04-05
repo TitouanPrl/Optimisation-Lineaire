@@ -36,6 +36,9 @@ int main (int argc, char** argv) {
     int b; /* Nb de deuxièmes bouquets */
     int recetteMax; /* Recette max que l'on peut avoir avec les stocks disponibles */
 
+    a = 0;
+    b = 0;
+
     /* ---- On pose le problème ---- */
 
     /* Stocks totaux */
@@ -87,9 +90,30 @@ int main (int argc, char** argv) {
         
     }
 
+    /* On fait la boucle pour trouver a et b s'ils sont en base */
+    for (int i = 0; i < 5; i++)
+    {
+        /* On trouve a */
+        if (tab[i][0] == 0)
+        {
+            a = tab[i][6];
+        }
+
+        /* On trouve b */
+        if (tab[i][0] == 1)
+        {
+            b = tab[i][6];
+        }        
+        
+    }
+    
+
+    /* On lit la recette max */
+    recetteMax = -tab[0][5];
+    
 
     /* On affiche la valeur max et le couple de valeur pour lequel il est atteint */
-    printf("Valeur max : %f \n", -tab[0][5]);
+    printf("Valeur max : %f \n", recetteMax);
     printf("Optimum : (%f;%f) \n", /*val x1 val x2*/);
         
 
