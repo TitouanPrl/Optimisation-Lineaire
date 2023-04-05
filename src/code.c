@@ -103,6 +103,7 @@ int varEntrante(float **tab, int largeur)
    int max;
 
    /* Initialisation */
+   numCol = -1;
    max = 0;
 
    /* On check toutes les colonnes */
@@ -136,6 +137,7 @@ int varSortante(float **tab, int hauteur, int varIn)
    int ratioMin;
 
    /* Initialisation */
+   numL = -1;
    ratioMin = tab[2][6] / tab[2][varIn];
 
    /* On check toutes les lignes */
@@ -192,19 +194,4 @@ void combiLin(float **tab, int ligne, int varOut, int varIn, int largeur)
    {
       tab[ligne][j] = tab[ligne][j] - tab[ligne][varIn] * tab[varOut][j];
    }
-}
-
-/*!
- *  \fn int arret(float** tab, int hauteur, int largeur, )
- *  \author PRADAL Titouan <pradaltito@cy-tech.fr>
- *  \version 0.1
- *  \date Sat 01 April 2023 - 12:17:16
- *  \brief 
- *  \param 
- *  \return 
- *  \remarks 
- */
-int arret(float** tab, int hauteur, int largeur, ) {
-    
-    return ();
 }
