@@ -22,37 +22,47 @@
  */
 void tabInit(float **tab, int lys, int rose, int jonquilles, int lys1, int rose1, int jonq1, int prix1, int lys2, int rose2, int jonq2, int prix2)
 {
-   /* Première ligne : f */
-   tab[0][0] = prix1;
-   tab[0][1] = prix2;
-   tab[0][2] = 0;
-   tab[0][3] = 0;
-   tab[0][4] = 0;
-   tab[0][5] = 0;
+   /* Ligne d'en tête */
+   tab[0][1] = 0; /* x1 */
+   tab[0][2] = 1; /* x2 */
+   tab[0][3] = 2; /* y1 */
+   tab[0][4] = 3; /* y2 */
+   tab[0][5] = 4; /* y3 */
 
-   /* Deuxième ligne : y1 */
-   tab[1][0] = lys1;
-   tab[1][1] = lys2;
-   tab[1][2] = 1;
+   /* Première ligne : f */
+   tab[1][1] = prix1;
+   tab[1][2] = prix2;
    tab[1][3] = 0;
    tab[1][4] = 0;
-   tab[1][5] = lys;
+   tab[1][5] = 0;
+   tab[1][6] = 0;
 
-   /* Troisième ligne : y2 */
-   tab[2][0] = rose1;
-   tab[2][1] = rose2;
-   tab[2][2] = 0;
+   /* Deuxième ligne : y1 */
+   tab[2][0] = 2;
+   tab[2][1] = lys1;
+   tab[2][2] = lys2;
    tab[2][3] = 1;
    tab[2][4] = 0;
-   tab[2][5] = rose;
+   tab[2][5] = 0;
+   tab[2][6] = lys;
 
-   /* Quatrième ligne : y3 */
-   tab[3][0] = jonq1;
-   tab[3][1] = jonq2;
-   tab[3][2] = 0;
+   /* Troisième ligne : y2 */
+   tab[3][0] = 3;
+   tab[3][1] = rose1;
+   tab[3][2] = rose2;
    tab[3][3] = 0;
    tab[3][4] = 1;
-   tab[3][5] = jonquilles;
+   tab[3][5] = 0;
+   tab[3][6] = rose;
+
+   /* Quatrième ligne : y3 */
+   tab[4][0] = 4;
+   tab[4][1] = jonq1;
+   tab[4][2] = jonq2;
+   tab[4][3] = 0;
+   tab[4][4] = 0;
+   tab[4][5] = 1;
+   tab[4][6] = jonquilles;
 }
 
 /*!
@@ -67,9 +77,9 @@ void tabInit(float **tab, int lys, int rose, int jonquilles, int lys1, int rose1
  */
 void afficherTab(float **tab, int hauteur, int largeur)
 {
-   for (int i = 0; i < hauteur; i++)
+   for (int i = 1; i < hauteur; i++)
    {
-      for (int j = 0; j < largeur; j++)
+      for (int j = 1; j < largeur; j++)
       {
          printf("%d ", tab[j][i]);
       }
@@ -96,11 +106,11 @@ int varEntrante(float **tab, int largeur)
    max = 0;
 
    /* On check toutes les colonnes */
-   for (int i = 0; i < largeur - 1; i++)
+   for (int i = 1; i < largeur - 1; i++)
    {
-      if (tab[0][i] > max)
+      if (tab[1][i] > max)
       {
-         max = tab[0][i];
+         max = tab[1][i];
          numCol = i;
       }
    }
@@ -126,14 +136,14 @@ int varSortante(float **tab, int hauteur, int varIn)
    int ratioMin;
 
    /* Initialisation */
-   ratioMin = tab[1][5] / tab[1][varIn];
+   ratioMin = tab[2][6] / tab[2][varIn];
 
    /* On check toutes les lignes */
-   for (int i = 2; i < hauteur; i++)
+   for (int i = 3; i < hauteur; i++)
    {
-      if ((tab[i][5] / tab[i][varIn] < ratioMin) && (tab[i][5] / tab[i][varIn] > 0))
+      if ((tab[i][6] / tab[i][varIn] < ratioMin) && (tab[i][6] / tab[i][varIn] > 0))
       {
-         ratioMin = tab[i][5] / tab[i][varIn];
+         ratioMin = tab[i][6] / tab[i][varIn];
          numL = i;
       }
    }
@@ -142,7 +152,7 @@ int varSortante(float **tab, int hauteur, int varIn)
 }
 
 /*!
- *  \fn void entreeVar(float** tab, int varOut, float pivot)
+ *  \fn void entreeVar(float** tab, int varOut, float pivot, int varIn)
  *  \author PRADAL Titouan <pradaltito@cy-tech.fr>
  *  \version 0.1
  *  \date Fri 31 March 2023 - 15:17:43
@@ -151,31 +161,36 @@ int varSortante(float **tab, int hauteur, int varIn)
  *  \param varOut la ligne de la variable sortante
  *  \param pivot valeur du pivot
  *  \param largeur largeur du tableau
+ *  \param varIn colonne de la variable entrante
  */
-void entreeVar(float **tab, int varOut, float pivot, int largeur)
+void entreeVar(float **tab, int varOut, float pivot, int largeur, int varIn)
 {
-   for (int j = 0; j < largeur; j++)
+   /* On met l'en-tête */
+   tab[varOut][0] = tab[0][varIn];
+
+   for (int j = 1; j < largeur; j++)
    {
       tab[varOut][j] = tab[varOut][j] / pivot;
    }
 }
 
 /*!
- *  \fn void combiLinF(float** tab, int varIn, int varOut, int largeur)
+ *  \fn void combiLinF(float** tab, int ligne, int varOut, int varIn, int largeur)
  *  \author PRADAL Titouan <pradaltito@cy-tech.fr>
  *  \version 0.1
  *  \date Fri 31 March 2023 - 15:39:09
  *  \brief Combinaison linéaire sur la ligne de f lors de l'entrée en base de la variable
  *  \param tab le tableau du problème
- *  \param varIn colonne de la variable entrante
+ *  \param ligne la ligne à modifier
  *  \param varOut la ligne de la variable sortante
+ *  \param varIn colonne de la variable entrante
  *  \param largeur largeur du tableau
  */
-void combiLin(float **tab, int varIn, int varOut, int largeur)
+void combiLin(float **tab, int ligne, int varOut, int varIn, int largeur)
 {
-   for (int j = 0; j < largeur; j++)
+   for (int j = 1; j < largeur; j++)
    {
-      tab[0][j] = tab[0][j] - tab[0][j] * tab[varOut][j];
+      tab[ligne][j] = tab[ligne][j] - tab[ligne][varIn] * tab[varOut][j];
    }
 }
 

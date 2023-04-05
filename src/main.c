@@ -15,7 +15,7 @@
  *  \fn int main (int argc, char** argv)
  *  \author PRADAL Titouan <pradaltito@cy-tech.fr>
  *  \version 0.1
- *  \date Tue 28 March 2023 - 14:38:36
+ *  \date Tue 28 March 2023 - 14:38:37
  *  \brief Programme principal
  *  \param argc : Nombre de paramètres à l'exécution
  *  \param argv : Valeur des paramètres 
@@ -56,33 +56,33 @@ int main (int argc, char** argv) {
     int prix2 = 50;
 
     /* Création du tableau */
-    float tab[4][6]; /* 4 lignes 6 colonnes */
+    float tab[5][7]; /* 4 lignes 6 colonnes + les en-têtes */
 
     /* Initialisation du tableau modélisant le problème */
     tabInit(tab, lys, rose, jonquilles, lys1, rose1, jonq1, prix1, lys2, rose2, jonq2, prix2);
 
     /* Affichage du tableau */
-    afficherTab(tab, 4, 6);
+    afficherTab(tab, 5, 7);
 
     /* On trouve la variable entrante */
-    varIn = varEntrante(tab, 6);
+    varIn = varEntrante(tab, 7);
 
     /* On trouve la variable sortante */
-    varOut = varEntrante(tab, 4, varIn);
+    varOut = varEntrante(tab, 5, varIn);
 
     /* On trouve le pivot */
     pivot = tab[varOut][varIn];
 
     /* On passe la variable entrante en base */
-    entreeVar(tab, varOut, pivot, 6);
+    entreeVar(tab, varOut, pivot, 7, varIn); 
 
     /* Combinaison linéaire sur les lignes pour obtenir des 0 dans la colonne */
-    for (int i = 0; i < 4; i++)
+    for (int i = 0; i < 5; i++)
     {
         /* On n'applique pas la combinaison linéaire sur la ligne de la var sortante */
         if (i != varOut)
         {
-            combiLin(tab, varIn, varOut, 6);
+            combiLin(tab, i, varOut, varIn, 7);
         }
         
     }
